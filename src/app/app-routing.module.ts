@@ -11,12 +11,13 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClientDetailsComponent } from './components/client-details/client-details.component';
 import { AuthGaurd } from './gaurds/auth.gaurd';
+import { RegisterGaurd } from './gaurds/register.gaurd'
 
 
 const routes:Routes=[
   {path:'', component: DashboardComponent, canActivate:[AuthGaurd]},
   {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
+  {path:'register',component:RegisterComponent, canActivate:[RegisterGaurd]},
   {path:'client/add',component:AddClientComponent, canActivate:[AuthGaurd]},
   {path:'client/edit/:id',component:EditClientComponent, canActivate:[AuthGaurd]},
   {path:'client/:id',component:ClientDetailsComponent, canActivate:[AuthGaurd]},
@@ -25,7 +26,7 @@ const routes:Routes=[
 ];
 
 @NgModule({
-  providers: [AuthGaurd],
+  providers: [AuthGaurd, RegisterGaurd],
   exports:[RouterModule],
   imports: [
     RouterModule.forRoot(routes),
