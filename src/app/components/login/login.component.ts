@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.authService.login(this.email,this.password)
-                    .then(response =>{
+                    .then(res =>{
                       this.flashMessage.show('You are now Logged In. . .',{
                         cssClass:'alert-success',timeout:4000
                       })
